@@ -1,0 +1,27 @@
+name: lint
+
+on:
+  push:
+    branches:
+      - "**"
+      - "!main"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: conferir o repositório git
+        uses: actions/checkout@v4
+
+      - name: instalar o node.js
+        uses: actions/setup-node@v4
+
+        with:
+          node-version: 20.11.1
+
+      - name: instalar dependências
+        run: yarn
+
+      - name: lint
+        run: yarn lint

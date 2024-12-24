@@ -1,0 +1,108 @@
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# reports de diagnóstico (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# dados de runtime
+pids
+*.pid
+*.seed
+*.pid.lock
+.DS_Store
+
+# diretório para bibliotecas instrumentadas geradas pelo jscoverage/jscover
+lib-cov
+
+# diretório de cobertura utilizado por ferramentas como o istanbul
+coverage
+*.lcov
+
+# cobertura de teste nyc
+.nyc_output
+
+# configuração do node-waf
+.lock-wscript
+
+# addons binários compilados (https://nodejs.org/api/addons.html)
+build/Release
+
+# diretórios de dependência
+node_modules/
+jspm_packages/
+
+# arquivos de declaração v1 do typescript
+typings/
+
+# cache do typescript
+*.tsbuildinfo
+
+# diretório de cache npm opcional
+.npm
+
+# cache do eslint opcional
+.eslintcache
+
+# histório repl opcional
+.node_repl_history
+
+# output do 'npm pack'
+*.tgz
+
+# arquivo de integridade do yarn
+.yarn-integrity
+
+# arquivo das variáveis de ambiente .env
+.env
+.env.test
+
+# cache do parcel-bundler (https://parceljs.org/)
+.cache
+
+# output de build do next.js
+.next
+
+# output de build do nuxt.js
+.nuxt
+
+# output de build do vuepress
+.vuepress/dist
+
+# diretórios sem servidores
+.serverless/
+
+# cache do fusebox
+.fusebox/
+
+# arquivos locais do dynamodb
+.dynamodb/
+
+# webpack
+.webpack/
+
+# vite
+.vite/
+
+# electron-forge
+out/
+
+.vscode/
+
+.venv
+
+dev.db
+
+__pycache__
+
+# pyinstaller
+build/
+resources/dist/
+*.spec
+
+# arquivo de configuração do sentry
+.env.sentry-build-plugin
