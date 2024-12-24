@@ -12,13 +12,13 @@ jobs:
           [
             {
               name: windows-latest,
-              build_path: out/Hydra-win32-x64,
-              artifact: Hydra-win32-x64,
+              build_path: out/Grace-win32-x64,
+              artifact: Grace-win32-x64,
             },
             {
               name: ubuntu-latest,
-              build_path: out/Hydra-linux-x64,
-              artifact: Hydra-linux-x64,
+              build_path: out/Grace-linux-x64,
+              artifact: Grace-linux-x64,
             },
           ]
 
@@ -42,7 +42,7 @@ jobs:
       - name: instalar dependências
         run: pip install -r requirements.txt
       - name: construir com o pyinstaller
-        run: pyinstaller torrent-client/main.py --distpath resources/dist --icon=images/icon.ico -n hydra-download-manager
+        run: pyinstaller torrent-client/main.py --distpath resources/dist --icon=images/icon.ico -n grace-download-manager
       - name: publicar
         run: yarn run publish
         env:
