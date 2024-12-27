@@ -72,7 +72,7 @@
     "deleting": "Suppression du programme d'installation…"
   },
   "activation": {
-    "title": "Activer Hydra",
+    "title": "Activer Grace",
     "installation_id": "ID d'installation :",
     "enter_activation_code": "Entrez votre code d'activation",
     "message": "Si vous ne savez pas où demander cela, vous ne devriez pas l'avoir.",
@@ -117,7 +117,7 @@
     "repack_count_other": "{{count}} réductions ajoutées"
   },
   "system_tray": {
-    "open": "Ouvrir Hydra",
+    "open": "Ouvrir Grace",
     "quit": "Quitter"
   },
   "game_card": {

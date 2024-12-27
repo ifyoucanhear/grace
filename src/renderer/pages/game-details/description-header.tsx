@@ -8,7 +8,7 @@ import type { ShopDetails } from "@types";
 
 import * as styles from "./game-details.css";
 
-const OPEN_HYDRA_URL = "https://open.gracelauncher.site";
+const OPEN_GRACE_URL = "https://open.gracelauncher.site";
 
 export interface DescriptionHeaderProps {
     gameDetails: ShopDetails | null;
@@ -42,7 +42,7 @@ export function DescriptionHeader({ gameDetails }: DescriptionHeaderProps) {
         });
     
         navigator.clipboard.writeText(
-            OPEN_HYDRA_URL + `/?${searchParams.toString()}`
+            OPEN_GRACE_URL + `/?${searchParams.toString()}`
         );
     
         const zero = performance.now();
