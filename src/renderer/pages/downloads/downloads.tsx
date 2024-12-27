@@ -1,4 +1,3 @@
-import prettyBytes from "pretty-bytes";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +10,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { BinaryNotFoundModal } from "../shared-modals/binary-not-found-modal";
 import * as styles from "./downloads.css";
 import { DeleteModal } from "./delete-modal";
+import { byteFormat } from "@renderer/utils";
 
 export function Downloads() {
     const { library, updateLibrary } = useLibrary();
@@ -66,10 +66,10 @@ export function Downloads() {
             return "N/A";
 
         if (game.fileSize)
-            return prettyBytes(game.fileSize);
+            return byteFormat(game.fileSize);
 
         if (gameDownloading?.fileSize && isGameDownloading)
-            return prettyBytes(gameDownloading.fileSize);
+            return byteFormat(gameDownloading.fileSize);
 
         return game.repack?.fileSize ?? "N/A";
     };
@@ -79,50 +79,54 @@ export function Downloads() {
         const finalDownloadSize = getFinalDownloadSize(game);
     
         if (isGameDeleting(game?.id)) {
-          return <p>{t("deleting")}</p>;
+            return <p>{t("deleting")}</p>;
         }
     
         if (isGameDownloading) {
-          return (
-            <>
-              <p>{progress}</p>
-    
-              {gameDownloading?.status !== "downloading" ? (
-                <p>{t(gameDownloading?.status)}</p>
-              ) : (
+            return (
                 <>
-                  <p>
-                    {prettyBytes(gameDownloading?.bytesDownloaded)} /{" "}
-                    {finalDownloadSize}
-                  </p>
-                  <p>
-                    {numPeers} peers / {numSeeds} seeds
-                  </p>
+                    <p>{progress}</p>
+            
+                    {gameDownloading?.status !== "downloading" ? (
+                        <p>{t(gameDownloading?.status)}</p>
+                    ) : (
+                        <>
+                            <p>
+                                {byteFormat(gameDownloading?.bytesDownloaded)} /{" "}
+                                {finalDownloadSize}
+                            </p>
+
+                            <p>
+                                {numPeers} peers / {numSeeds} seeds
+                            </p>
+                        </>
+                    )}
                 </>
-              )}
-            </>
-          );
+            );
         }
     
         if (game?.status === "seeding") {
-          return (
-            <>
-              <p>{game?.repack.title}</p>
-              <p>{t("completed")}</p>
-            </>
-          );
+            return (
+                <>
+                <p>{game?.repack.title}</p>
+                <p>{t("completed")}</p>
+                </>
+            );
         }
-        if (game?.status === "cancelled") return <p>{t("cancelled")}</p>;
+
+        if (game?.status === "cancelled")
+            return <p>{t("cancelled")}</p>;
+
         if (game?.status === "downloading_metadata")
-          return <p>{t("starting_download")}</p>;
+            return <p>{t("starting_download")}</p>;
     
         if (game?.status === "paused") {
-          return (
-            <>
-              <p>{formatDownloadProgress(game.progress)}</p>
-              <p>{t("paused")}</p>
-            </>
-          );
+            return (
+                <>
+                    <p>{formatDownloadProgress(game.progress)}</p>
+                    <p>{t("paused")}</p>
+                </>
+            );
         }
     };
 
