@@ -11,7 +11,7 @@ import { NoEntryIcon, PlusCircleIcon } from "@primer/octicons-react";
 import { BinaryNotFoundModal } from "../shared-modals/binary-not-found-modal";
 import * as styles from "./hero-panel.css";
 import { useDate } from "@renderer/hooks/use-date";
-import { byteFormat } from "@renderer/utils";
+import { formatBytes } from "@renderer/utils";
 
 export interface HeroPanelProps {
     game: Game | null;
@@ -127,10 +127,10 @@ export function HeroPanel({
             return "N/A";
 
         if (game.fileSize)
-            return byteFormat(game.fileSize);
+            return formatBytes(game.fileSize);
 
         if (gameDownloading?.fileSize && isGameDownloading)
-            return byteFormat(gameDownloading.fileSize);
+            return formatBytes(gameDownloading.fileSize);
 
         return game.repack?.fileSize ?? "N/A";
     }, [game, isGameDownloading, gameDownloading]);
@@ -180,7 +180,7 @@ export function HeroPanel({
                         </>
                     ) : (
                         <p className={styles.downloadDetailsRow}>
-                            {byteFormat(gameDownloading?.bytesDownloaded)} /{" "}
+                            {formatBytes(gameDownloading?.bytesDownloaded)} /{" "}
                             {finalDownloadSize}
 
                             <small>
@@ -202,7 +202,7 @@ export function HeroPanel({
                     </p>
 
                     <p>
-                        {byteFormat(game.bytesDownloaded)} / {finalDownloadSize}
+                        {formatBytes(game.bytesDownloaded)} / {finalDownloadSize}
                     </p>
                 </>
             );
